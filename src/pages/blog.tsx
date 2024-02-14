@@ -6,16 +6,13 @@ export default function Page() {
     <Background>
       <Header />
       <header className="flex flex-grow flex-col items-center justify-center space-y-4 px-8 py-16 text-center">
-        <h1 className="text-6xl font-bold leading-tight">
-          Custom built to scale your company
-        </h1>
+        <h1 className="text-6xl font-bold leading-tight">Dummy text 2</h1>
         <p className="text-xl text-gray-600">
-          Ensure you’re investor ready with our corporate information and legal
-          document infrastructure.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex placeat
+          dolorum impedit molestiae eligendi, minima earum! Error recusandae
+          perspiciatis voluptas eum! Officiis natus totam maiores optio aut
+          alias consequuntur aliquam!
         </p>
-        <button className="rounded-md bg-green-600 p-2 text-white">
-          Schedule a demo
-        </button>
       </header>
     </Background>
   );
