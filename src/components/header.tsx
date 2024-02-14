@@ -20,13 +20,13 @@ export const Header = () => {
         </Link>
         <Link
           className="text-gray-600 hover:text-gray-800"
-          href="https://app.aerialops.io/login"
+          href="https://app.staging.aerialops.io/login"
         >
           Login
         </Link>
         <Link
           className="bg-green-500 p-2 text-white"
-          href="https://app.aerialops.io"
+          href="https://app.staging.aerialops.io"
         >
           Sign Up
         </Link>
