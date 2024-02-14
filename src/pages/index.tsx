@@ -11,7 +11,7 @@ export default function Page() {
         </h1>
         <p className="text-xl text-gray-600">
           Ensure you’re investor ready with our corporate information and legal
-          document infrastructure.
+          document infrastructure. (change to test if deploys are working)
         </p>
         <button className="rounded-md bg-green-600 p-2 text-white">
           Schedule a demo
