@@ -18,10 +18,18 @@ export const Header = () => {
         <Link className="text-gray-600 hover:text-gray-800" href="blog">
           Blog
         </Link>
-        <Link className="text-gray-600 hover:text-gray-800" href="#">
+        <Link
+          className="text-gray-600 hover:text-gray-800"
+          href="https://app.aerialops.io/login"
+        >
           Login
         </Link>
-        <button className="bg-green-500 p-2 text-white">Sign Up</button>
+        <Link
+          className="bg-green-500 p-2 text-white"
+          href="https://app.aerialops.io"
+        >
+          Sign Up
+        </Link>
       </div>
     </nav>
   );

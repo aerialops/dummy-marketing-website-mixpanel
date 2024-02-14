@@ -9,7 +9,7 @@ export default function Page() {
         <h1 className="text-6xl font-bold leading-tight">Because</h1>
         <p className="text-xl text-gray-600">We do cool stuff!</p>
         <button className="rounded-md bg-green-600 p-2 text-white">
-          Button in a different page
+          Button
         </button>
       </header>
     </Background>
