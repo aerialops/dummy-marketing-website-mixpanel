@@ -1,0 +1,68 @@
+name: Deploy to Vercel
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+# Only run on main branch. No deployment on PRs.
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "**.md"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # Create a `GITHUB_TOKEN` secret scoped to this repo, which will be revoked
+    # after the workflow finishes.
+    # https://docs.github.com/en/actions/security-guides/automatic-token-authentication
+    permissions:
+      contents: read
+      deployments: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+
+      - name: Install node, pnpm and packages
+        uses: aerialops/ci-actions/pnpm-with-cached-modules@main
+
+      # Build the app with --prod flag if required. This has to match the
+      # `PRODUCTION` value in the deploy step.
+      - name: Build Vercel app
+        shell: bash
+        # We do not need to `vercel pull` because we have the
+        # `.vercel/project.json` file committed to the repo.
+        run: |
+          pnpm vercel pull --token=${{ secrets.VERCEL_TOKEN }} --scope=aerial-ops --yes
+          pnpm vercel build --prod --token=${{ secrets.VERCEL_TOKEN }} --scope=aerial-ops
+
+      - name: Get Vercel project configuration from project.json
+        id: vercel-project-config
+        shell: bash
+        run: |
+          orgId=$(jq -r '.orgId' .vercel/project.json)
+          projectId=$(jq -r '.projectId' .vercel/project.json)
+          echo "VERCEL_ORG_ID=$orgId" >> $GITHUB_OUTPUT
+          echo "VERCEL_PROJECT_ID=$projectId" >> $GITHUB_OUTPUT
+
+      - name: Deploy to Vercel
+        uses: tianhuil/deploy-to-vercel-action@1.9.13
+        with:
+          # Use github token from the `permissions` field.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ steps.vercel-project-config.outputs.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ steps.vercel-project-config.outputs.VERCEL_PROJECT_ID }}
+          # The scope is the value shown in `vercel switch` command in parenthesis
+          # This is required if the Vercel account is of Pro tier (a Team)
+          VERCEL_SCOPE: aerial-ops
+
+          ALIAS_DOMAINS: |
+            dummy.aerialops.io
+          PRODUCTION: true
+          # We prebuild the app in github actions since Vercel only allows 1
+          # concurrent build, which queues up all other builds from other PRs.
+          PREBUILT: true
