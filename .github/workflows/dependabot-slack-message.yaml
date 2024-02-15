@@ -1,0 +1,31 @@
+name: "Dependabot vulerabilities notification to Slack"
+
+on:
+  schedule:
+    # Once a week on monday
+    - cron: "0 10 * * 1" # Cron
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# Based on this guide: https://www.teracloud.io/single-post/dependabot-get-slack-notifications-using-github-actions
+jobs:
+  notify:
+    # Create a `GITHUB_TOKEN` secret scoped to this repo, which will be revoked
+    # after the workflow finishes.
+    # https://docs.github.com/en/actions/security-guides/automatic-token-authentication
+    permissions:
+      contents: read
+      deployments: write
+      pull-requests: write
+      security-events: write
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Notify Vulnerabilities
+        uses: kunalnagarco/action-cve@v1.9.5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # Only grants write access to the particular slack channel.
+          # Configured in this Slack appp: https://api.slack.com/apps/A06JYM84DUM/general?
+          slack_webhook: "https://hooks.slack.com/services/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"
