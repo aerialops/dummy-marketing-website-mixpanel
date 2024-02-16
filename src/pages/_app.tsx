@@ -16,6 +16,7 @@ const useInitMixpanel = () => {
       debug: true,
       track_pageview: false,
       cookie_domain: ".aerialops.io",
+      cross_subdomain_cookie: true,
     });
   }, []);
 };
