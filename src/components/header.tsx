@@ -18,6 +18,9 @@ export const Header = () => {
         <Link className="text-gray-600 hover:text-gray-800" href="blog">
           Blog
         </Link>
+        <Link className="text-gray-600 hover:text-gray-800" href="test-form">
+          Test Form
+        </Link>
         <Link
           className="text-gray-600 hover:text-gray-800"
           href="https://app.staging.aerialops.io/login"
