@@ -21,7 +21,7 @@ const useInitMixpanel = () => {
       cookie_domain: ".aerialops.io",
       cross_subdomain_cookie: true,
     });
-    mixpanel.register({ isMarketingSiteREGISTERED: true });
+    mixpanel.register({ isMarketingSite: true });
   }, []);
 };
 
@@ -33,7 +33,6 @@ const useTrackPageView = () => {
       mixpanel.track_pageview({
         from: router.asPath,
         to,
-        isMarketingSite: true,
       });
 
     router.events.on("hashChangeStart", trackPageChange);
