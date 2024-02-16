@@ -14,7 +14,10 @@ const useInitMixpanel = () => {
   React.useEffect(() => {
     mixpanel.init(env.NEXT_PUBLIC_MIXPANEL_PROJECT_KEY, {
       debug: true,
+      // Client side navigation will not be automatically tracked, so we need to do it manually
       track_pageview: false,
+      // Share the same cookie across subdomains so we can properly track the user
+      // in the marketing site and the app
       cookie_domain: ".aerialops.io",
       cross_subdomain_cookie: true,
     });
@@ -29,6 +32,7 @@ const useTrackPageView = () => {
       mixpanel.track_pageview({
         from: router.asPath,
         to,
+        isMarketingSite: true,
       });
 
     router.events.on("hashChangeStart", trackPageChange);
