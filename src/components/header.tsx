@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LinkWithMixpanelTracking } from "./link-with-mixpanel-tracking";
 
 export const Header = () => {
   return (
@@ -21,18 +22,20 @@ export const Header = () => {
         <Link className="text-gray-600 hover:text-gray-800" href="test-form">
           Test Form
         </Link>
-        <Link
+        <LinkWithMixpanelTracking
           className="text-gray-600 hover:text-gray-800"
           href="https://app.staging.aerialops.io/login"
+          id="login-button"
         >
           Login
-        </Link>
-        <Link
+        </LinkWithMixpanelTracking>
+        <LinkWithMixpanelTracking
           className="bg-green-500 p-2 text-white"
           href="https://app.staging.aerialops.io"
+          id="sign-up-button"
         >
           Sign Up
-        </Link>
+        </LinkWithMixpanelTracking>
       </div>
     </nav>
   );
