@@ -21,7 +21,6 @@ const useInitMixpanel = () => {
       cookie_domain: ".aerialops.io",
       cross_subdomain_cookie: true,
     });
-    mixpanel.register({ isMarketingSite: true });
   }, []);
 };
 

@@ -56,7 +56,7 @@ export default function Page() {
       </div>
       <div>
         <p className="mb-80 text-center text-white">
-          This form is not connected to anything, it's just a static form.
+          This form is not connected to anything.
         </p>
       </div>
     </Background>
