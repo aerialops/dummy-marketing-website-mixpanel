@@ -15,6 +15,7 @@ const useInitMixpanel = () => {
     mixpanel.init(env.NEXT_PUBLIC_MIXPANEL_PROJECT_KEY, {
       debug: true,
       track_pageview: false,
+      cookie_domain: ".aerialops.io",
     });
   }, []);
 };
