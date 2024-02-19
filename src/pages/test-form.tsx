@@ -79,7 +79,6 @@ const FormWithRedirect: React.FC = () => {
   React.useEffect(() => {
     setTimeout(() => {
       if (ref.current === null) return;
-      // All form submissions should be tracked with different event names, as they are different actions.
       mixpanel.track_forms(ref.current, "Form submitted", () => {
         if (ref.current === null) return;
         // We use `ref.current` instead of the argument passed to the callback, as the argument is not typed.
