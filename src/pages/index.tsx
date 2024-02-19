@@ -18,6 +18,7 @@ export default function Page() {
           href="https://calendly.com/doug-aerial/website-demo-request"
           className="rounded-lg bg-blue-500 px-4 py-2 text-white"
           id="schedule-demo-button"
+          description="Schedule a demo button in main page"
         >
           Schedule a demo
         </LinkWithMixpanelTracking>

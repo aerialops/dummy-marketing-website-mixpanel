@@ -26,6 +26,7 @@ export const Header = () => {
           className="text-gray-600 hover:text-gray-800"
           href="https://app.staging.aerialops.io/login"
           id="login-button"
+          description="Login button in header"
         >
           Login
         </LinkWithMixpanelTracking>
@@ -33,6 +34,7 @@ export const Header = () => {
           className="bg-green-500 p-2 text-white"
           href="https://app.staging.aerialops.io"
           id="sign-up-button"
+          description="Sign up button in header"
         >
           Sign Up
         </LinkWithMixpanelTracking>

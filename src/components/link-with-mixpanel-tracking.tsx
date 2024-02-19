@@ -5,8 +5,9 @@ export const LinkWithMixpanelTracking: React.FC<{
   href: string;
   className: string;
   id: string;
+  description: string;
   children: React.ReactNode;
-}> = ({ href, className, id, children }) => {
+}> = ({ href, className, id, description, children }) => {
   const ref = React.useRef<HTMLAnchorElement>(null);
   // Has to be tracked in an effect, as the element must be in the DOM before Mixpanel can attach the event listener.
   // As a workaround, this has to be wrapped in a `setTimeout` as well. See issue here:
@@ -22,9 +23,10 @@ export const LinkWithMixpanelTracking: React.FC<{
       mixpanel.track_links(ref.current, "Link clicked", {
         href,
         id,
+        description,
       });
     }, 0);
-  }, [href, id]);
+  }, [href, id, description]);
 
   return (
     // Having the `id` be the same as the `id` we send to Mixpanel is a good practice,

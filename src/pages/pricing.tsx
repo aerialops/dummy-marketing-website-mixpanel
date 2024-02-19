@@ -21,7 +21,8 @@ const PricingCard: React.FC<{
       <LinkWithMixpanelTracking
         href="https://calendly.com/doug-aerial/website-demo-request"
         className="rounded-lg bg-blue-500 px-4 py-2 text-white"
-        id="schedule-demo-button"
+        id={`schedule-demo-button-${title.toLowerCase()}`}
+        description={`Schedule a ${title}-tier demo in pricing page`}
       >
         Schedule a demo
       </LinkWithMixpanelTracking>
