@@ -50,6 +50,7 @@ const FormInputs: React.FC = () => {
 };
 
 const FormWithoutRedirect: React.FC = () => {
+  const id = "invite-form-without-redirect";
   return (
     <form
       className="flex max-w-2xl flex-grow flex-col rounded-lg bg-white p-6 shadow-lg"
@@ -60,9 +61,10 @@ const FormWithoutRedirect: React.FC = () => {
         const formEntries = Object.fromEntries(formData.entries());
         mixpanel.track("Form submitted", {
           formEntries,
-          formId: "invite-form-without-redirect",
+          id,
         });
       }}
+      id={id}
     >
       <FormInputs />
     </form>
