@@ -2,6 +2,8 @@
 
 A simple next.js app to test how we can track events from our marketing page to our app using Mixpanel.
 
+Can be run using `pnpm dev`. Live version at https://dummy.aerialops.io
+
 
 ![image](https://github.com/aerialops/dummy-marketing-website-mixpanel/assets/57573579/c678029e-77e7-4130-8651-8f12610c6ccf)
 
