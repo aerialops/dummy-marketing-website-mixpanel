@@ -1,5 +1,6 @@
 import { Background } from "~/components/background";
 import { Header } from "~/components/header";
+import { LinkWithMixpanelTracking } from "~/components/link-with-mixpanel-tracking";
 
 const PricingCard: React.FC<{
   title: string;
@@ -17,13 +18,13 @@ const PricingCard: React.FC<{
       <div className="flex-grow" />
       <h2 className="mb-4 text-3xl font-bold">{price}</h2>
 
-      <a
+      <LinkWithMixpanelTracking
         href="https://calendly.com/doug-aerial/website-demo-request"
-        target="_blank"
         className="rounded-lg bg-blue-500 px-4 py-2 text-white"
+        id="schedule-demo-button"
       >
         Schedule a demo
-      </a>
+      </LinkWithMixpanelTracking>
     </div>
   );
 };

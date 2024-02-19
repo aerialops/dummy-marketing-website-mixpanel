@@ -1,5 +1,6 @@
 import { Background } from "~/components/background";
 import { Header } from "~/components/header";
+import { LinkWithMixpanelTracking } from "~/components/link-with-mixpanel-tracking";
 
 export default function Page() {
   return (
@@ -13,9 +14,13 @@ export default function Page() {
           Ensure you’re investor ready with our corporate information and legal
           document infrastructure. (retrigger deploys)
         </p>
-        <button className="rounded-md bg-green-600 p-2 text-white">
+        <LinkWithMixpanelTracking
+          href="https://calendly.com/doug-aerial/website-demo-request"
+          className="rounded-lg bg-blue-500 px-4 py-2 text-white"
+          id="schedule-demo-button"
+        >
           Schedule a demo
-        </button>
+        </LinkWithMixpanelTracking>
       </header>
     </Background>
   );
