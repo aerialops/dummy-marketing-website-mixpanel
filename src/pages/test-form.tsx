@@ -54,6 +54,7 @@ const FormWithoutRedirect: React.FC = () => {
     <form
       className="flex max-w-2xl flex-grow flex-col rounded-lg bg-white p-6 shadow-lg"
       onSubmit={(event) => {
+        // prevent full page reload before we track the event
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
         const formEntries = Object.fromEntries(formData.entries());
