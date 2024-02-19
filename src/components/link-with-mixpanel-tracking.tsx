@@ -17,7 +17,7 @@ export const LinkWithMixpanelTracking: React.FC<{
       // This method will wait for a success on the Mixpanel log up to 300ms before redirecting the user.
       // This is a better guarantee (compared to `mixpanel.track`) that the event will be tracked,
       // as the user will probably not be redirected before the event is sent.
-      // All form submissions should be tracked with the same event name, but identified by their id.
+      // All link submissions should be tracked with the same event name, but identified by their id.
       // This makes it easier to analyze which links are clicked more often, and how many interactions we have in total.
       mixpanel.track_links(ref.current, "Link clicked", {
         href,
