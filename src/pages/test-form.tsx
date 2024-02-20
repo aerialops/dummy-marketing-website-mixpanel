@@ -54,14 +54,25 @@ const FormWithoutRedirect: React.FC = () => {
   return (
     <form
       className="flex max-w-2xl flex-grow flex-col rounded-lg bg-white p-6 shadow-lg"
-      onSubmit={(event) => {
+      onSubmit={async (event) => {
         // prevent full page reload before we track the event
         event.preventDefault();
+
+        // Track the form submission, which will not block it as Mixpanel will track it asynchronously
         const formData = new FormData(event.currentTarget);
         const formEntries = Object.fromEntries(formData.entries());
         mixpanel.track("Form submitted", {
           formEntries,
           id,
+        });
+
+        // Then perform the logic to submit the form as you normally would
+        await fetch("https://example.com/submit-form", {
+          method: "POST",
+          body: JSON.stringify(formEntries),
+          headers: {
+            "Content-Type": "application/json",
+          },
         });
       }}
       id={id}
