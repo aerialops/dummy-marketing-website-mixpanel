@@ -64,6 +64,7 @@ const FormWithoutRedirect: React.FC = () => {
         mixpanel.track("Form submitted", {
           formEntries,
           id,
+          description: "Form from /test-form page, without redirect",
         });
 
         // Then perform the logic to submit the form as you normally would
