@@ -96,7 +96,11 @@ const FormWithRedirect: React.FC = () => {
         // We use `ref.current` instead of the argument passed to the callback, as the argument is not typed.
         const formData = new FormData(ref.current);
         const formEntries = Object.fromEntries(formData.entries());
-        return { formEntries, formId: "invite-form-with-redirect" };
+        return {
+          formEntries,
+          formId: "invite-form-with-redirect",
+          description: "Form from /test-form page, with redirect",
+        };
       });
     }, 0);
   }, []);
