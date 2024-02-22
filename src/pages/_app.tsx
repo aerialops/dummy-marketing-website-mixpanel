@@ -24,6 +24,21 @@ const useInitMixpanel = () => {
   }, []);
 };
 
+/** Create an object with containing all query parameter key value pairs from a
+ * given URL, to be used in analytics for easier report creation. This way, we
+ * don't have to parse the strings when creating the report. */
+export const mkQueryParamsObject = (
+  pathOrUrl: string,
+  keyPrefix: string,
+): Record<string, string> => {
+  const { searchParams } = new URL(pathOrUrl, window.location.origin);
+  const obj: Record<string, string> = {};
+  searchParams.forEach((value, key) => {
+    obj[`${keyPrefix}_${key}`] = value;
+  });
+  return obj;
+};
+
 const useTrackPageView = () => {
   const router = useRouter();
 
@@ -32,6 +47,7 @@ const useTrackPageView = () => {
       mixpanel.track_pageview({
         from: router.asPath,
         to,
+        ...mkQueryParamsObject(to, "to_qp"),
       });
 
     router.events.on("hashChangeStart", trackPageChange);
