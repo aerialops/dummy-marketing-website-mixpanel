@@ -13,7 +13,11 @@ export const Header = () => {
         <Link className="text-gray-600 hover:text-gray-800" href="why">
           Why Aerial
         </Link>
-        <Link className="text-gray-600 hover:text-gray-800" href="pricing">
+        {/* Add a query param to showcase how tracking the `to_path` parameter works */}
+        <Link
+          className="text-gray-600 hover:text-gray-800"
+          href="pricing?foo=bar"
+        >
           Pricing
         </Link>
         <Link className="text-gray-600 hover:text-gray-800" href="blog">

@@ -39,6 +39,9 @@ export const mkQueryParamsObject = (
   return obj;
 };
 
+const mkPathFromUrl = (pathOrUrl: string) =>
+  new URL(pathOrUrl, window.location.origin).pathname;
+
 const useTrackPageView = () => {
   const router = useRouter();
 
@@ -47,6 +50,7 @@ const useTrackPageView = () => {
       mixpanel.track_pageview({
         from: router.asPath,
         to,
+        to_path: mkPathFromUrl(to),
         ...mkQueryParamsObject(to, "to_qp"),
       });
 
