@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+# We don't want to index this page
